@@ -60,10 +60,7 @@ export class BotUpdate {
       return;
     }
 
-    const senderId = ctx.from?.id;
-    const tracked = this.users
-      .getUsers(ctx.chat.id)
-      .filter((u) => u.id !== senderId); // don't mention the sender
+    const tracked = this.users.getUsers(ctx.chat.id);
 
     if (tracked.length === 0) {
       await ctx.reply(
